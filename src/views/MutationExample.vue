@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <ApolloQuery />
+    <ApolloMutation />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ApolloQuery from "@/components/ApolloQuery.vue";
+import ApolloMutation from "@/components/ApolloMutation.vue";
 
 export default {
-  name: "Home",
+  name: "MutationExample",
   components: {
-    ApolloQuery,
+    ApolloMutation,
   },
 };
 </script>
