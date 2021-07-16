@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
-    <ApolloMutation
+    <!-- first option -->
+    <!-- <ApolloMutation
       :mutation="require('../graphql/createTodo.gql')"
       :variables="{ input }"
       @done="onDone"
@@ -19,11 +20,25 @@
           }}" was created
         </p>
       </template>
-    </ApolloMutation>
+    </ApolloMutation> -->
+
+    <!-- second option -->
+    <form>
+      <label for="title">Title</label>&nbsp;
+      <input type="text" id="title" v-model="input.title" />&nbsp;
+      <button @click="onClick">Create a task</button>
+    </form>
+    <p v-if="response">
+      A new task with the id of "{{ response.id }}" and the title of "{{
+        response.title
+      }}" was created
+    </p>
   </div>
 </template>
 
 <script>
+import gql from "graphql-tag";
+
 export default {
   data() {
     return {
@@ -37,6 +52,26 @@ export default {
   methods: {
     onDone(val) {
       this.response = val.data.createTodo;
+      this.input.title = "";
+    },
+    async onClick() {
+      const result = await this.$apollo.mutate({
+        // Query
+        mutation: gql`
+          mutation($input: CreateTodoInput!) {
+            createTodo(input: $input) {
+              id
+              title
+              completed
+            }
+          }
+        `,
+        // Parameters
+        variables: {
+          input: this.input,
+        },
+      });
+      this.response = result.data.createTodo;
       this.input.title = "";
     },
   },
