@@ -46,25 +46,25 @@
 </template>
 
 <script>
-import gql from "graphql-tag";
+// import gql from 'graphql-tag';
 export default {
   data() {
     return {
       page: 5,
     };
   },
-  apollo: {
-    todos: gql`
-      query ToDos {
-        todos(options: { paginate: { page: 1 } }) {
-          data {
-            id
-            title
-          }
-        }
-      }
-    `,
-  },
+  // apollo: {
+  //   todos: gql`
+  //     query ToDos {
+  //       todos(options: { paginate: { page: 1 } }) {
+  //         data {
+  //           id
+  //           title
+  //         }
+  //       }
+  //     }
+  //   `,
+  // },
 };
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <!-- first option -->
-    <!-- <ApolloMutation
+    <ApolloMutation
       :mutation="require('../graphql/createTodo.gql')"
       :variables="{ input }"
       @done="onDone"
@@ -20,10 +20,10 @@
           }}" was created
         </p>
       </template>
-    </ApolloMutation> -->
+    </ApolloMutation>
 
     <!-- second option -->
-    <form>
+    <!-- <form>
       <label for="title">Title</label>&nbsp;
       <input type="text" id="title" v-model="input.title" />&nbsp;
       <button @click="onClick">Create a task</button>
@@ -32,18 +32,18 @@
       A new task with the id of "{{ response.id }}" and the title of "{{
         response.title
       }}" was created
-    </p>
+    </p> -->
   </div>
 </template>
 
 <script>
-import gql from "graphql-tag";
+// import gql from 'graphql-tag';
 
 export default {
   data() {
     return {
       input: {
-        title: "",
+        title: '',
         completed: false,
       },
       response: null,
@@ -52,28 +52,28 @@ export default {
   methods: {
     onDone(val) {
       this.response = val.data.createTodo;
-      this.input.title = "";
+      this.input.title = '';
     },
-    async onClick() {
-      const result = await this.$apollo.mutate({
-        // Query
-        mutation: gql`
-          mutation($input: CreateTodoInput!) {
-            createTodo(input: $input) {
-              id
-              title
-              completed
-            }
-          }
-        `,
-        // Parameters
-        variables: {
-          input: this.input,
-        },
-      });
-      this.response = result.data.createTodo;
-      this.input.title = "";
-    },
+    // async onClick() {
+    //   const result = await this.$apollo.mutate({
+    //     // Query
+    //     mutation: gql`
+    //       mutation($input: CreateTodoInput!) {
+    //         createTodo(input: $input) {
+    //           id
+    //           title
+    //           completed
+    //         }
+    //       }
+    //     `,
+    //     // Parameters
+    //     variables: {
+    //       input: this.input,
+    //     },
+    //   });
+    //   this.response = result.data.createTodo;
+    //   this.input.title = '';
+    // },
   },
 };
 </script>
