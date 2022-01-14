@@ -1,17 +1,17 @@
 <template>
   <div class="home">
-    <ApolloQuery />
+    <books-list></books-list>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ApolloQuery from "@/components/ApolloQuery.vue";
+import BooksList from "@/components/BooksList.vue";
 
 export default {
   name: "Home",
   components: {
-    ApolloQuery,
+    BooksList
   },
 };
 </script>

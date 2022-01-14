@@ -9,6 +9,10 @@
 </template>
 
 <style>
+body {
+  background: url(./assets/img/glory-low-contrast.jpg) fixed #dea478 top center no-repeat;
+  background-size: 120%;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

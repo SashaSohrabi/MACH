@@ -1,8 +1,0 @@
-query allTodos($page: Int) {
-  todos(options: { paginate: { page: $page } }) {
-    data {
-      id
-      title
-    }
-  }
-}

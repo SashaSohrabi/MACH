@@ -1,0 +1,29 @@
+query MyQuery($numberOfLists: Int, $numberOfBooks: Int, $skipBook: Int) {
+  all_books_list(limit: $numberOfLists) {
+    items {
+      book_listsConnection(limit: $numberOfBooks, skip: $skipBook) {
+        edges {
+          node {
+            ... on Book {
+              title
+              author
+              description
+              imageConnection {
+                edges {
+                  node {
+                    url(transform: { height: "150", quality: 100, width: "150" })
+                    title
+                  }
+                }
+              }
+              system {
+                uid
+              }
+            }
+          }
+        }
+        totalCount
+      }
+    }
+  }
+}
