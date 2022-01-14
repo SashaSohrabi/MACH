@@ -10,8 +10,7 @@
 
         <!-- Result -->
         <div v-else-if="data" class="result apollo">
-          {{ data }}
-          <router-link :to="{ name: 'book', params: {id: '123'}}">Click</router-link>
+          <single-book v-for="(book, indx) in data.all_books_list.items[0].book_listsConnection.edges" :key="indx" :bookData="book.node"></single-book>
         </div>
         <css-spinner v-else></css-spinner>
       </template>
@@ -21,15 +20,18 @@
 
 <script>
 import CssSpinner from '@/components/CssSpinner.vue';
+import SingleBook from '@/components/SingleBook.vue';
 
 export default {
+  name: 'BookList',
   components: {
-    CssSpinner
+    CssSpinner,
+    SingleBook,
   },
   data() {
     return {
       numberOfLists: 1,
-      numberOfBooks: 3,
+      numberOfBooks: 5,
       skipBook: 0,
     };
   },

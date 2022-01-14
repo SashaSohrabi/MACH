@@ -19,6 +19,7 @@ query MyQuery($numberOfLists: Int, $numberOfBooks: Int, $skipBook: Int) {
               system {
                 uid
               }
+              pages
             }
           }
         }

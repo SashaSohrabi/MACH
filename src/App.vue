@@ -11,6 +11,7 @@
 <style>
 body {
   background: url(./assets/img/glory-low-contrast.jpg) fixed #dea478 top center no-repeat;
+  background: #888888;
   background-size: 120%;
 }
 #app {
@@ -19,6 +20,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  color: white;
 }
 
 #nav {
