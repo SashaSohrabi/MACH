@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Apollo Query</router-link> |
-      <router-link to="/mutation">Apollo Mutation</router-link>
+      <router-link to="/" class="logo">
+        <img src="./assets/img/logo_book-elibrary.png" alt="logo">
+      </router-link> |
     </div>
     <router-view />
   </div>
@@ -10,9 +11,9 @@
 
 <style>
 body {
-  background: url(./assets/img/glory-low-contrast.jpg) fixed #dea478 top center no-repeat;
-  background: #888888;
-  background-size: 120%;
+  background-image: linear-gradient(to bottom, rgba(86, 86, 88, 0.52), rgba(12, 4, 10, 0.73)), url(./assets/img/background-image.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -20,7 +21,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  color: white;
 }
 
 #nav {
@@ -34,5 +34,15 @@ body {
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.logo {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+}
+
+.logo img {
+  width: 150px;
 }
 </style>

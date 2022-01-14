@@ -11,7 +11,7 @@ query MyQuery($numberOfLists: Int, $numberOfBooks: Int, $skipBook: Int) {
               imageConnection {
                 edges {
                   node {
-                    url(transform: { height: "150", quality: 100, width: "150" })
+                    url(transform: { height: "140", quality: 50, width: "110" })
                     title
                   }
                 }

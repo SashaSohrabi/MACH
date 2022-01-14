@@ -54,4 +54,9 @@ li {
 a {
   color: #42b983;
 }
+.result {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
 </style>
