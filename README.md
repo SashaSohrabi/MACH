@@ -1,4 +1,4 @@
-# vue-apollo-erik-2019
+# vue-contentstack
 
 ## Project setup
 ```
