@@ -47,4 +47,15 @@ a {
   font-size: 14px;
   color: rgb(204, 204, 204);
 }
+
+@media (max-width: 750px) {
+  .book {
+    width: 160px;
+    height: 240px;
+  }
+
+  .book__image {
+    padding-top: 40px;
+  }
+}
 </style>

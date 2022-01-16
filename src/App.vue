@@ -2,8 +2,9 @@
   <div id="app">
     <div id="nav">
       <router-link to="/" class="logo">
-        <img src="./assets/img/logo_book-elibrary.png" alt="logo">
-      </router-link> |
+        <img src="./assets/img/logo_book-elibrary.png" alt="logo" />
+      </router-link>
+      |
     </div>
     <router-view />
   </div>
@@ -44,5 +45,16 @@ body {
 
 .logo img {
   width: 150px;
+}
+
+@media (max-width: 750px) {
+  .logo {
+    top: 5px;
+    left: 5px;
+  }
+
+  .logo img {
+    width: 120px;
+  }
 }
 </style>

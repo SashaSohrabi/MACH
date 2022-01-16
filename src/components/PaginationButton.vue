@@ -50,11 +50,18 @@ button {
 }
 
 button:hover {
-   background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 button:active {
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
 }
 
+@media (max-width: 750px) {
+  button {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
 </style>

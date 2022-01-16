@@ -41,7 +41,8 @@ export default {
 </script>
 
 <style scoped>
-.prev-btn, .next-btn {
+.prev-btn,
+.next-btn {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
@@ -57,6 +58,16 @@ export default {
 
 [disabled] {
   color: #1b447e;
-  cursor: not-allowed
+  cursor: not-allowed;
+}
+
+@media (max-width: 750px) {
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
 }
 </style>
