@@ -1,7 +1,7 @@
 <template>
   <div class="buttons-wrapper">
-    <pagination-button label="Previous Page" :disabled="!hasPreviousPage" @handlePagination="handlePagination" class="prev-btn"></pagination-button>
-    <pagination-button label="Next Page" :disabled="!hasNextPage" @handlePagination="handlePagination" class="next-btn"></pagination-button>
+    <pagination-button label="Previous" :disabled="!hasPreviousPage" @handlePagination="handlePagination" class="prev-btn"></pagination-button>
+    <pagination-button label="Next" :disabled="!hasNextPage" @handlePagination="handlePagination" class="next-btn"></pagination-button>
   </div>
 </template>
 
@@ -29,7 +29,7 @@ export default {
   methods: {
     ...mapMutations(['goToTheNextPage', 'goToThePreviousPage']),
     handlePagination(btnLabel) {
-      if (btnLabel === 'Next Page') {
+      if (btnLabel === 'Next') {
         this.goToTheNextPage();
         return;
       }
