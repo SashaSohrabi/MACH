@@ -29,6 +29,11 @@ a {
   height: 300px;
   background: top center / contain no-repeat url(../assets/img/book-bg.png);
   margin: 50px;
+  transition: all 0.3s;
+}
+
+.book:hover {
+  transform: translateY(-10px) scale(1.05);
 }
 
 .book__image {
