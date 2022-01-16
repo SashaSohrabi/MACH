@@ -28,7 +28,7 @@ button {
   background: none repeat scroll 0 0 transparent;
   border: medium none;
   border-spacing: 0;
-  color: #2d6ec9;
+  color: #5095f5;
   background-color: rgba(0, 0, 0, 0.5);
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 16px;

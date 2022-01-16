@@ -56,7 +56,7 @@ export default {
 }
 
 [disabled] {
-  color: #0d203b;
+  color: #1b447e;
   cursor: not-allowed
 }
 </style>
