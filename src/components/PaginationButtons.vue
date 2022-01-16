@@ -1,7 +1,7 @@
 <template>
   <div class="buttons-wrapper">
-    <pagination-button label="Previous Page" :disabled="!hasPreviousPage" @handlePagination="handlePagination"></pagination-button>
-    <pagination-button label="Next Page" :disabled="!hasNextPage" @handlePagination="handlePagination"></pagination-button>
+    <pagination-button label="Previous Page" :disabled="!hasPreviousPage" @handlePagination="handlePagination" class="prev-btn"></pagination-button>
+    <pagination-button label="Next Page" :disabled="!hasNextPage" @handlePagination="handlePagination" class="next-btn"></pagination-button>
   </div>
 </template>
 
@@ -39,3 +39,24 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prev-btn {
+  left: 15px;
+}
+
+.next-btn {
+  right: 15px;
+}
+
+[disabled] {
+  color: #0d203b;
+  cursor: not-allowed
+}
+</style>
