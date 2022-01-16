@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <ApolloQuery :query="require('../graphql/allBooks.gql')" :variables="{ numberOfLists, numberOfBooks, skipBook }">
+    <ApolloQuery :query="require('../graphql/allBooks.gql')" :variables="{ numberOfLists, numberOfBooksPerPage, skipBook }">
       <template v-slot="{ result: { loading, error, data } }">
         <!-- Loading -->
         <div v-if="loading" class="loading apollo">Loading...</div>
@@ -11,6 +11,7 @@
         <!-- Result -->
         <div v-else-if="data" class="result apollo">
           <single-book v-for="(book, indx) in data.all_books_list.items[0].book_listsConnection.edges" :key="indx" :bookData="book.node"></single-book>
+          <pagination-buttons :totalBooksCount="data.all_books_list.items[0].book_listsConnection.totalCount"></pagination-buttons>
         </div>
         <css-spinner v-else></css-spinner>
       </template>
@@ -19,22 +20,25 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import CssSpinner from '@/components/CssSpinner.vue';
 import SingleBook from '@/components/SingleBook.vue';
+import PaginationButtons from '@/components/PaginationButtons.vue';
 
 export default {
   name: 'BookList',
   components: {
     CssSpinner,
     SingleBook,
+    PaginationButtons
   },
-  data() {
-    return {
-      numberOfLists: 1,
-      numberOfBooks: 5,
-      skipBook: 0,
-    };
-  },
+  computed: {
+    ...mapGetters({
+      numberOfLists: 'getNumberOfLists',
+      numberOfBooksPerPage: 'getNumberOfBooksPerPage',
+      skipBook: 'getSkipBook'
+    })
+  }
 };
 </script>
 

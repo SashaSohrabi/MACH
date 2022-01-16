@@ -1,7 +1,7 @@
-query MyQuery($numberOfLists: Int, $numberOfBooks: Int, $skipBook: Int) {
+query MyQuery($numberOfLists: Int, $numberOfBooksPerPage: Int, $skipBook: Int) {
   all_books_list(limit: $numberOfLists) {
     items {
-      book_listsConnection(limit: $numberOfBooks, skip: $skipBook) {
+      book_listsConnection(limit: $numberOfBooksPerPage, skip: $skipBook) {
         edges {
           node {
             ... on Book {
