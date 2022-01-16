@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 .prev-btn, .next-btn {
-  position: absolute;
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
 }
