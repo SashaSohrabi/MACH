@@ -16,7 +16,6 @@ export default {
   },
   methods: {
     fetchBook(uid) {
-      this.$store.dispatch('fetchSingleBook', uid);
       this.$router.push({ name: 'book', params: {id: `${uid}`}});
     }
   }

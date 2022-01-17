@@ -26,13 +26,16 @@ export default new Vuex.Store({
     setNumberOfBooksPerPage: (state, numberOfBooksPerPage) => (state.numberOfBooksPerPage = numberOfBooksPerPage),
     setTotalBooksCount: (state, totalBooksCount) => (state.totalBooksCount = totalBooksCount),
     setSingleBookData: (state, singleBook) => {
-      state.singleBookData = Object.assign({}, singleBook)
+      state.singleBookData = Object.assign({}, singleBook);
     },
     goToTheNextPage: (state) => {
       state.skipBook = state.skipBook + state.numberOfBooksPerPage;
     },
     goToThePreviousPage: (state) => {
       state.skipBook = state.skipBook - state.numberOfBooksPerPage;
+    },
+    deleteBookData: (state) => {
+      state.singleBookData = Object.assign({}, {});
     }
   },
   actions: {
@@ -48,8 +51,8 @@ export default new Vuex.Store({
           const numberOfPages = entry.get('pages');
           const author = entry.get('author');
           const description = entry.get('description');
-          
-          commit('setSingleBookData', {title, imageUrl, numberOfPages, author, description});
+
+          commit('setSingleBookData', { title, imageUrl, numberOfPages, author, description });
         },
         function error(err) {
           console.log(err);
