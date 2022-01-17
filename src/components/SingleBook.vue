@@ -1,8 +1,8 @@
 <template>
-  <router-link :to="{ name: 'book', params: { id: '123' } }" v-if="bookData" class="book">
+  <div @click.prevent="fetchBook(bookData.system.uid)" class="book">
     <img class="book__image" :src="bookData.imageConnection.edges[0].node.url" :alt="bookData.title" />
     <h3 class="book__title">{{ bookData.title }}</h3>
-  </router-link>
+  </div>
 </template>
 
 <script>
@@ -12,6 +12,12 @@ export default {
     bookData: {
       type: Object,
       require: true
+    }
+  },
+  methods: {
+    fetchBook(uid) {
+      this.$store.dispatch('fetchSingleBook', uid);
+      this.$router.push({ name: 'book', params: {id: `${uid}`}});
     }
   }
 };
