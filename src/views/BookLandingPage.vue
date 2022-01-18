@@ -28,7 +28,6 @@ export default {
   created() {
     const uid = this.$route.params.id;
     this.fetchSingleBook(uid);
-    console.log(process.env.API_KEY, process.env.DELIVERY_TOKE, process.env.ENVIRONMENT_NAME);
   },
   computed: {
     ...mapGetters({

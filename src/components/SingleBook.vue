@@ -35,6 +35,7 @@ a {
   background: top center / contain no-repeat url(../assets/img/book-bg.png);
   margin: 50px;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .book:hover {
