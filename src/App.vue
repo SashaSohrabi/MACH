@@ -4,7 +4,6 @@
       <router-link to="/" class="logo">
         <img src="./assets/img/logo_book-elibrary.png" alt="logo" />
       </router-link>
-      |
     </div>
     <router-view />
   </div>
@@ -25,7 +24,7 @@ body {
 }
 
 #nav {
-  padding: 30px;
+  padding: 40px;
 }
 
 #nav a {

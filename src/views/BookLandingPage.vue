@@ -2,7 +2,7 @@
   <div class="book-page">
     <router-link to="/" class="book-page__back-button">Back</router-link>
     <css-spinner v-if="!book.title" class="book-page__spinner"></css-spinner>
-    <div class="book-page__content">
+    <div v-else class="book-page__content">
       <img :src="book.imageUrl" :alt="book.title" class="book-page__image" />
       <div class="book-page__text-wrapper">
         <h2 class="book-page__title">{{ book.title }}</h2>
@@ -59,7 +59,7 @@ export default {
 }
 .book-page__text-wrapper {
   background: rgba(255, 255, 255, 0.5);
-  width: 70%;
+  width: 60%;
   padding: 30px;
   border-radius: 30px;
 }
@@ -112,6 +112,10 @@ export default {
   }
   .book-page__image {
     margin: 0 0 30px 0;
+      max-width: 220px;
+  }
+  .book-page__text-wrapper {
+    width: 90%;
   }
 }
 </style>

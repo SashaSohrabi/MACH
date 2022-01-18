@@ -7,7 +7,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     numberOfLists: 1,
-    numberOfBooksPerPage: 4,
+    numberOfBooksPerPage: 5,
     skipBook: 0,
     totalBooksCount: 0,
     singleBookData: {}
