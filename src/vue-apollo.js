@@ -15,7 +15,7 @@ const httpEndpoint = process.env.VUE_APP_GRAPHQL_HTTP || 'https://graphql.conten
 const httpLink = new HttpLink({
   uri: httpEndpoint,
   headers: {
-    access_token: 'cs41433027a78579d5f304d46f',
+    access_token: process.env.VUE_APP_DELIVERY_TOKEN,
   },
 });
 

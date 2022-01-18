@@ -41,7 +41,7 @@ export default new Vuex.Store({
   actions: {
     fetchSingleBook: async ({ commit }, uid) => {
       // TODO: Use dotenv file for constants
-      const Stack = Contentstack.Stack('blt79ee9a4ccb712671', 'cs41433027a78579d5f304d46f', 'development');
+      const Stack = Contentstack.Stack(process.env.VUE_APP_API_KEY, process.env.VUE_APP_DELIVERY_TOKEN, process.env.VUE_APP_ENVIRONMENT_NAME);
       const Query = Stack.ContentType('book').Entry(`${uid}`);
 
       Query.fetch().then(
