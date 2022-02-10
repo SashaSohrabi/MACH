@@ -1,7 +1,7 @@
 <template>
   <div class="book-page">
     <router-link to="/" class="book-page__back-button">Back</router-link>
-    <css-spinner v-if="!book.title" class="book-page__spinner"></css-spinner>
+    <css-spinner v-if="!book.title && !book.imageUrl" class="book-page__spinner"></css-spinner>
     <div v-else class="book-page__content">
       <img :src="book.imageUrl" :alt="book.title" class="book-page__image" />
       <div class="book-page__text-wrapper">
