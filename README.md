@@ -1,4 +1,4 @@
-# vue-contentstack
+# vue-contentstack [Click here to see the app](https://mach-vue-app.web.app/)
 
 ## Project setup
 ```
