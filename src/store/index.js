@@ -21,6 +21,7 @@ export default new Vuex.Store({
     getSingleBookData: (state) => state.singleBookData,
     getTotalBooksCount: (state) => state.totalBooksCount,
     getSingleBookUid: (state) => state.singleBookData.uid,
+    getComments: (state) => state.comments,
     hasNextPage: (state) => state.skipBook + state.numberOfBooksPerPage < state.totalBooksCount,
     hasPreviousPage: (state) => state.skipBook > 0
   },

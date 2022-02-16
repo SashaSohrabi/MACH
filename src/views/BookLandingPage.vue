@@ -2,32 +2,42 @@
   <div class="book-page">
     <router-link to="/" class="book-page__back-button">Back</router-link>
     <css-spinner v-if="!book.title && !book.imageUrl" class="book-page__spinner"></css-spinner>
-    <div v-else class="book-page__content">
-      <img :src="book.imageUrl" :alt="book.title" class="book-page__image" />
-      <div class="book-page__text-wrapper">
-        <h2 class="book-page__title">{{ book.title }}</h2>
-        <p>
-          by
-          <span class="book-page__author">{{ book.author }}</span>
-        </p>
-        <p class="book-page__description">{{ book.description }}</p>
-        <span class="book-page__pages">{{ book.numberOfPages }} pages</span>
+    <div v-else>
+      <div class="book-page__content">
+        <img :src="book.imageUrl" :alt="book.title" class="book-page__image" />
+        <div class="book-page__text-wrapper">
+          <h2 class="book-page__title">{{ book.title }}</h2>
+          <p>
+            by
+            <span class="book-page__author">{{ book.author }}</span>
+          </p>
+          <p class="book-page__description">{{ book.description }}</p>
+          <span class="book-page__pages">{{ book.numberOfPages }} pages</span>
+        </div>
       </div>
+      <comments-list :uid="uid"></comments-list>
     </div>
   </div>
 </template>
 
 <script>
 import CssSpinner from '@/components/CssSpinner.vue';
+import CommentsList from '@/components/CommentsList.vue';
 import { mapGetters, mapActions } from 'vuex';
+
 export default {
   name: 'BookLandingPage',
   components: {
-    CssSpinner
+    CssSpinner,
+    CommentsList
+  },
+  data() {
+    return {
+      uid: this.$route.params.id
+    };
   },
   created() {
-    const uid = this.$route.params.id;
-    this.fetchSingleBook(uid);
+    this.fetchSingleBook(this.uid);
   },
   computed: {
     ...mapGetters({
@@ -39,11 +49,12 @@ export default {
   },
   destroyed() {
     this.$store.commit('deleteBookData');
+    this.$store.commit('deleteComments');
   }
 };
 </script>
 
-<style scoped>
+<style>
 .book-page {
   padding: 50px;
 }
@@ -51,6 +62,7 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: flex-start;
+  margin-bottom: 50px;
 }
 .book-page__image {
   max-width: 320px;
@@ -101,7 +113,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.book-page__back-button:hover::before{
+.book-page__back-button:hover::before {
   border-right: 10px solid rgba(0, 0, 0, 0.4);
 }
 @media (max-width: 750px) {
@@ -112,7 +124,7 @@ export default {
   }
   .book-page__image {
     margin: 0 0 30px 0;
-      max-width: 220px;
+    max-width: 220px;
   }
   .book-page__text-wrapper {
     width: 90%;
