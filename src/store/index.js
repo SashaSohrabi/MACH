@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Contentstack from 'contentstack';
+import { fetchCommentsFromJsonPlaceholder } from '../microservices/jsonPlaceholder.js';
 
 Vue.use(Vuex);
 
@@ -10,7 +11,8 @@ export default new Vuex.Store({
     numberOfBooksPerPage: 5,
     skipBook: 0,
     totalBooksCount: 0,
-    singleBookData: {}
+    singleBookData: {},
+    comments: []
   },
   getters: {
     getNumberOfLists: (state) => state.numberOfLists,
@@ -18,6 +20,7 @@ export default new Vuex.Store({
     getSkipBook: (state) => state.skipBook,
     getSingleBookData: (state) => state.singleBookData,
     getTotalBooksCount: (state) => state.totalBooksCount,
+    getSingleBookUid: (state) => state.singleBookData.uid,
     hasNextPage: (state) => state.skipBook + state.numberOfBooksPerPage < state.totalBooksCount,
     hasPreviousPage: (state) => state.skipBook > 0
   },
@@ -28,6 +31,7 @@ export default new Vuex.Store({
     setSingleBookData: (state, singleBook) => {
       state.singleBookData = Object.assign({}, singleBook);
     },
+    setComments: (state, comments) => (state.comments = [...comments]),
     goToTheNextPage: (state) => {
       state.skipBook = state.skipBook + state.numberOfBooksPerPage;
     },
@@ -36,6 +40,9 @@ export default new Vuex.Store({
     },
     deleteBookData: (state) => {
       state.singleBookData = Object.assign({}, {});
+    },
+    deleteComments: (state) => {
+      state.comments = [];
     }
   },
   actions: {
@@ -52,12 +59,16 @@ export default new Vuex.Store({
           const author = entry.get('author');
           const description = entry.get('description');
 
-          commit('setSingleBookData', { title, imageUrl, numberOfPages, author, description });
+          commit('setSingleBookData', { uid, title, imageUrl, numberOfPages, author, description });
         },
         function error(err) {
           console.log(err);
         }
       );
+    },
+    fetchComments: async ({ commit }, uid) => {
+      const comments = await fetchCommentsFromJsonPlaceholder(uid);
+      commit('setComments', comments);
     }
   }
 });
